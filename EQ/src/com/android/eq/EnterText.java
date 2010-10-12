@@ -15,7 +15,6 @@ public class EnterText extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.enter_text);
 
-        final long position = 1;
         TextView prompt = (TextView) findViewById(R.id.prompt);
         final Emotion emotion = new Emotions().findById(getIntent().getLongExtra(Home.EMOTION_ID, -1));
         prompt.setText("Why so " + emotion.getDescription() + "?");
