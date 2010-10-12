@@ -1,12 +1,11 @@
 package com.android.eq;
 
-import android.*;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 public class EmotionsAdapter extends BaseAdapter {
     private Context mContext;
@@ -16,7 +15,7 @@ public class EmotionsAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return 9;
+        return mThumbIds.length;
     }
 
     public Object getItem(int position) {
@@ -28,19 +27,24 @@ public class EmotionsAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView view;
+        ImageView imageView;
         if (convertView == null) {
-            view = new TextView(mContext);
-            view.setLayoutParams(new GridView.LayoutParams(85, 85));
-            view.setPadding(30, 30, 30, 30);
-            view.setText(position - 4 + "");
-            view.setBackgroundColor(android.R.color.white);
-            parent.setBackgroundColor(android.R.color.white);
-
+            imageView = new ImageView(mContext);
+            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setPadding(8, 8, 8, 8);
         } else {
-            view = (TextView) convertView;
-
+            imageView = (ImageView) convertView;
         }
-        return view;
+
+        imageView.setImageResource(mThumbIds[position]);
+        return imageView;
     }
+
+    private Integer[] mThumbIds = {
+            R.drawable.smile,
+            R.drawable.serious,
+            R.drawable.sad
+    };
+
 }
