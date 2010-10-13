@@ -23,6 +23,4 @@ public class Emotion {
     public String getDescription() {
         return description;
     }
-
-
 }
